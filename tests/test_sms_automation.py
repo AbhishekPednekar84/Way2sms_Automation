@@ -15,7 +15,9 @@ def test_send_sms(driver_login):
     Case description: Send an sms from the registered account
     """
     driver_login.find_element_by_id("mobile").send_keys(SMS_USER)
-    driver_login.find_element_by_id("message").send_keys("Test Message")
+    driver_login.find_element_by_id("message").send_keys(
+        "This is a test message " "from Selenium"
+    )
     driver_login.find_element_by_xpath('//*[@id="sendButton"]').click()
 
     assert driver_login.find_element_by_id("mobile").text == ""
@@ -50,9 +52,9 @@ def test_schedule_sms(driver_login):
 
     try:
         driver_login.find_element_by_xpath('//*[@id="futsms"]/a/span').click()
-        driver_login.find_element_by_xpath('//*[@id="mobile"]').send_keys("9895802537")
+        driver_login.find_element_by_xpath('//*[@id="mobile"]').send_keys(SMS_USER)
         driver_login.find_element_by_xpath('//*[@id="message"]').send_keys(
-            "Good Morning!"
+            "This is a test message from Selenium!"
         )
         driver_login.find_element_by_xpath('//*[@id="sdate"]').clear()
         driver_login.find_element_by_xpath('//*[@id="sdate"]').send_keys("29/06/2019")
